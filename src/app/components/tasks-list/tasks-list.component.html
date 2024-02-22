@@ -1,0 +1,27 @@
+<div class="list row">
+    <div class="col-md-6">
+        <h4>Tasks List</h4>
+        <ul class="list-group">
+            @for (task of tasks; track task.id; let i = $index) {
+            <li [ngStyle]="{'background-color': task.active ? 'green' : 'red' }" class="list-group-item"
+                [class.active]="i == currentIndex" (click)="setActiveTask(task, i)">
+                {{ task.description }} 
+            </li>
+            }
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <app-task-details [viewMode]="true" [currentTask]="currentTask"></app-task-details>
+    </div>
+</div>
+
+<div style="margin-top: 100px;"><h5>Legends:</h5></div>
+<div class="col-md-2">
+    <div class="col-md-1" style="background-color: red;"> &nbsp;</div>
+    <div class="col-md-1">Pending</div>
+</div>
+<hr>
+<div class="col-md-2">
+    <div class="col-md-1" style="background-color: green;"> &nbsp;</div>
+    <div class="col-md-1">Published</div>
+</div>
